@@ -15,9 +15,11 @@
       <b-nav card-header tabs >
         <!-- <b-nav-item>'s with child routes. Note the trailing slash on the first <b-nav-item> -->
         <b-nav-item to="/" exact exact-active-class="active"><b-spinner type="grow" variant="danger" small></b-spinner>MN</b-nav-item>
+        <b-nav-item to="/state" exact exact-active-class="active"><b-spinner type="grow" variant="danger" small></b-spinner>STATE</b-nav-item>
         <b-nav-item to="/us" exact exact-active-class="active"><b-spinner type="grow" variant="danger" small></b-spinner>US</b-nav-item>
-        <b-nav-item to="/global" exact exact-active-class="active"><b-spinner type="grow" variant="danger" small></b-spinner>Global</b-nav-item>
-        <b-nav-item to="/news" exact exact-active-class="active">News</b-nav-item>
+        <b-nav-item to="/global" exact exact-active-class="active"><b-spinner type="grow" variant="danger" small></b-spinner>GLOBAL</b-nav-item>
+        <b-nav-item to="/news" exact exact-active-class="active">NEWS</b-nav-item>
+        
       </b-nav>
     </b-card-header>
 
@@ -45,12 +47,11 @@
           If you find this project useful — or just feeling generous, consider buying me a beer or a coffee.
         </p>
         <div class="donate">
-    
           <a href="https://www.buymeacoffee.com/ImP9gONBW"><img src="https://proudmonkeystorage.blob.core.windows.net/cdn/common/donate_coffee.png"></a>
           <a href="https://www.paypal.me/vmsdurano"><img src="https://proudmonkeystorage.blob.core.windows.net/cdn/common/donate_paypal.svg" height="37"></a>
         </div>
         <div class="mt-3">
-        <a href="https://vmsdurano.com/" target="_blank">2020 By Vincent Maverick Durano</a> 
+          2020 By <a href="https://vmsdurano.com/" target="_blank">Vincent Maverick Durano</a> 
         </div>
     </template>
   </b-card>
@@ -75,6 +76,9 @@ export default {
 #app {
   text-align: center;
   margin-top: 10px;
+}
+.container{
+   max-width: 1400px; 
 }
 
 .donate > a {

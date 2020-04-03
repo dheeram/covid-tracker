@@ -1,20 +1,19 @@
 <template>
-  <div class="MNChart">
+  <div class="USMap">
     <line-chart
       v-if="loaded"
       :width="300" 
       :height="300"
       :cases="totalCases"
-      :recovers="totalRecovery"
+      :hospitalized="totalHospitalized"
       :deaths="totalDeaths"
-      :active="totalActive"
-      :labels="totalCounty"/>
+      :labels="dateReported"/>
   </div>
 </template>
 
 <script>
-import LineChart from './LineChartPublic.vue'
-//import axios from 'axios'
+import LineChart from './LineChart.vue'
+import * as moment from "moment/moment";
 
 export default {
   name: 'LineChartContainer',
@@ -28,21 +27,19 @@ export default {
   },
   computed: {
         totalCases(){
-            return this.agg.map(p => p.Confirmed);
+            return this.agg.map(p => p.positiveIncrease || 0);
         },
-        totalRecovery(){
-            return this.agg.map(p => p.Recovered);
+        totalHospitalized(){
+            return this.agg.map(p => p.hospitalizedIncrease || 0);
         },
         totalDeaths(){
-            return this.agg.map(p => p.Deaths);
+            return this.agg.map(p => p.deathIncrease || 0);
         },
-        totalActive(){
-            return this.agg.map(p => p.Active);
+        dateReported(){
+            return this.agg.map(p => moment(p.dateChecked).format('MM/DD'));
         },
-        totalCounty(){
-            return this.agg.map(p => p.Combined_Key.split(",")[0]);
-        },
-},
+
+  },
  mounted () {
     this.loaded = false
     if(this.cases.length > 0){
